@@ -1,10 +1,13 @@
 import React from "react";
-import { useState } from "react";
+import { useContext,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css"
+import AuthContext from "./context/AuthContext";
 
 
 const Login = (props) => {
+  // const { user,login, logout } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate= useNavigate();
@@ -25,7 +28,8 @@ const Login = (props) => {
         body:JSON.stringify(item),
         headers:{
             "Content-Type" : "application/json",
-            "Accept": "application/json"
+            Authorization:"Token" + user.token,
+            // "Accept": "application/json" 
 
         },
 
@@ -40,6 +44,7 @@ const Login = (props) => {
      { 
         let result = await response.json();
          console.log(result);
+
          } 
      else 
      { console.error('Sign up request failed:', response.statusText); } 

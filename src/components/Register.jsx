@@ -1,6 +1,8 @@
 import { useState } from "react";
 import React from "react";
 import "./Register.css";
+import { useNavigate } from "react-router-dom";
+
 
 const Register = (props) => {
   const [firstname, setFirstname] = useState("");
@@ -8,6 +10,7 @@ const Register = (props) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate= useNavigate();
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -40,6 +43,7 @@ const Register = (props) => {
     } catch (error) {
       console.error("An error occurred:", error);
     }
+    navigate('/login')
   }
 
   return (
