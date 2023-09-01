@@ -43,7 +43,7 @@ const Register = (props) => {
     } catch (error) {
       console.error("An error occurred:", error);
     }
-    navigate('/login')
+    navigate('/expense')
   }
 
   return (
